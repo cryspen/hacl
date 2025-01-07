@@ -36,6 +36,8 @@ extern "C" {
 #include "krml/internal/target.h"
 
 #include "internal/Hacl_Krmllib.h"
+#include "internal/Hacl_Hash_MD5.h"
+#include "internal/Hacl_Hash_Blake2b.h"
 #include "../Hacl_Hash_SHA2.h"
 
 static const
@@ -123,6 +125,8 @@ void Hacl_Hash_SHA2_sha256_finish(uint32_t *st, uint8_t *h);
 
 void Hacl_Hash_SHA2_sha224_init(uint32_t *hash);
 
+void Hacl_Hash_SHA2_sha224_update_nblocks(uint32_t len, uint8_t *b, uint32_t *st);
+
 void
 Hacl_Hash_SHA2_sha224_update_last(uint64_t totlen, uint32_t len, uint8_t *b, uint32_t *st);
 
@@ -155,6 +159,14 @@ Hacl_Hash_SHA2_sha384_update_last(
 );
 
 void Hacl_Hash_SHA2_sha384_finish(uint64_t *st, uint8_t *h);
+
+typedef struct FStar_Pervasives_Native_option___uint64_t__s
+{
+  FStar_Pervasives_Native_option___uint8_t___uint8_t___bool_____uint64_t_____uint64_t____tags
+  tag;
+  uint64_t *v;
+}
+FStar_Pervasives_Native_option___uint64_t_;
 
 #if defined(__cplusplus)
 }
